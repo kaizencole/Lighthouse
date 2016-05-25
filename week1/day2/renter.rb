@@ -1,11 +1,13 @@
 # must be baller and either furnished or rent cheaper than 2100
-def rent?(furnished, rent, baller)
-  if baller && furnished || rent < 2100
-    return true
-  else
-    return false
-  end
-end
+#def rent?(furnished, rent, baller)
+  # Wrong: if baller && furnished || rent < 2100
+  # Fixed below:
+  #if baller && (furnished || rent < 2100)
+    #return true
+  #else
+    #return false
+  #end
+#end
 
 ###
 # Add your "test" ("driver") code below in order to "test drive" (run) your method above...
@@ -14,6 +16,15 @@ end
 # Without the test code, it will be hard for you to know if this method is working as it should or not.
 ###
 
+#Reduced
+def rent?(furnished, rent,baller)
+  baller && (furnished || rent < 2100)
+end
+
+#Good cases
 puts rent?(true, 2600, false)
 puts rent?(false, 2600, true)
 puts rent?(false, 2000, true)
+
+#Bad case
+puts rent?(false, 2600, true)
