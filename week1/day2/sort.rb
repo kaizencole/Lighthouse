@@ -1,46 +1,67 @@
 # Sort the array from lowest to highest
 def bubbleSort(array)
+  max_num = arr[0]
+  len = array.size 
+
+if len == 1
+  return array[0]
+  elsif len == 0
+    puts "max of empty set is: nil" 
+  else
   # set `swapped` to true as default
-  swapped = true
+    swapped = true
   # while no element was sorted ( a swap has happened, i.e. swapped = true )
-  while swapped
+    while swapped
     # reset swapped (i.e. set swapped = false)
     # for i = 0, until n - 1 where n = array.length
-    for i in 0...(array.length-1)
+      for i in 0...(array.length-1)
       # a = array[i] and b = array[i + 1]
-      a = array[i]  
-      b = array[i+1]
+        a = array[i]  
+        b = array[i+1]
       # if a is bigger than b
-      if a > b
+        if a > b
         # swap needed, swap a and b values
-        array[i+1] = a
-        array[i] = b
+          array[i+1] = a
+          array[i] = b
         # set swapped to true, so we can go through while loop again
-        swapped = true
-      else
-        swapped = false
+          swapped = true
+        else
+          swapped = false
+        end
       end
     end
+    puts "#{array}"
   end
-  puts "#{array}"
 end
-
 
 # # Find the maximum and minimum
 def maximum(array)
   #if array == []
     #puts "max on empty set is: nil"
   #else
-  arr = bubbleSort(array)
-  puts array[array.length-1] 
+  len = array.size 
+
+if len == 1
+  puts "max of just #{array[0]} is: #{array[0]}"
+  elsif len == 0
+    puts "max on empty set is: nil"
+  else
+    arr = bubbleSort(array)
+    puts array[array.length-1] 
+  end
 end
 
 def minimum(array)
   #if array == []
     #puts "max on empty set is: nil"
   #else
-  arr = bubbleSort(array)
-  puts array[0]
+  puts "min of just #{array[0]} is: #{array[0]}"
+  elsif len == 0
+    puts "min on empty set is: nil"
+  else
+    arr = bubbleSort(array)
+    puts array[0]
+  end
 end
 
 bubbleSort([2, 42, 35, 3])
