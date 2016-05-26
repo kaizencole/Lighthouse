@@ -1,12 +1,15 @@
+puts "input array" 
+array = gets.split(",").map(&:to_i)
+
 # Sort the array from lowest to highest
 def bubbleSort(array)
-  max_num = arr[0]
+  max_num = array[0]
   len = array.size 
 
-if len == 1
-  return array[0]
-  elsif len == 0
-    puts "max of empty set is: nil" 
+if len == 0
+  puts "max of empty set is: nil" 
+  elsif len == 1
+    puts array[0]
   else
   # set `swapped` to true as default
     swapped = true
@@ -41,36 +44,36 @@ def maximum(array)
   #else
   len = array.size 
 
-if len == 1
-  puts "max of just #{array[0]} is: #{array[0]}"
-  elsif len == 0
-    puts "max on empty set is: nil"
-  else
-    arr = bubbleSort(array)
-    puts array[array.length-1] 
+  if len == 1
+    puts "max of just #{array[0]} is: #{array[0]}"
+    elsif len == 0
+      puts "max on empty set is: nil"
+    else
+      arr = bubbleSort(array)
+      puts array[array.length-1] 
   end
 end
+
 
 def minimum(array)
   #if array == []
     #puts "max on empty set is: nil"
   #else
-  puts "min of just #{array[0]} is: #{array[0]}"
-  elsif len == 0
-    puts "min on empty set is: nil"
-  else
-    arr = bubbleSort(array)
-    puts array[0]
+  len = array.size 
+
+  if len == 1
+    puts "min of just #{array[0]} is: #{array[0]}"
+      elsif len == 0
+        puts "min on empty set is: nil"
+      else
+        arr = bubbleSort(array)
+        puts array[0]
   end
 end
 
-bubbleSort([2, 42, 35, 3])
-maximum([2, 42, 35, 3])
-minimum([2, 42, 35, 3])
-
-bubbleSort[]
-maximum[]
-minimum[]
+bubbleSort(array)
+maximum(array)
+minimum(array)
 
  
 # # expect it to return 42 below
