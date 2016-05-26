@@ -69,13 +69,3 @@ def find_state_for_city(search)
     puts state if city.include? search
   end
 end
-
-find_state_for_city("Orlando")
-
-
-
-
-
-
-
-
