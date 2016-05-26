@@ -7,22 +7,17 @@ def maximum(arr)
   len = arr.size 
 
   if len == 1
-  return arr[0]
-  elsif len == 0
-  puts "max of empty set is: nil" 
-  else
-  
-    arr.each { |num|
-      if num < 0
-        num = num.to_f
-      end 
-
-      if num >= max_num
-        max_num = num
+    return arr[0]
+    elsif len == 0
+      puts "max of empty set is: nil" 
+    else
+      arr.each do |num|
+        if num >= max_num
+          max_num = num
+        end
       end
-       }
-      return max_num
-   end
+    return max_num
+  end
 end
 
 #def maximum(arr)
