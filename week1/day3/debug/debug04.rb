@@ -1,10 +1,9 @@
 def char_count(list)
-  counts = Hash.new 0
-  words = list.join('')
-  letters = words.split('')
-  letters.each { |letter|
-    counts[letter] += 1 }
-  puts counts
+  letters = Hash.new 0
+  list.each do |word|
+    word.split('').each { |letter| letters[letter] += 1 }
+  end
+  letters
 end
 
 # Why the long face(error)? 
