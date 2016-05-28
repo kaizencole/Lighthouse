@@ -1,45 +1,34 @@
 # This is the main entrypoint into the program
 # It requires the other files/gems that it needs
 
-require 'pry'
-require './candidates'
-require './filters'
-
 require_relative ('./candidates.rb')
 require_relative ('./filters.rb')
+
+require 'pry'
+require 'colorize'
 
 ## Task 6
 
 loop = true
 
-while loop == true do
+while loop do
 
   puts "Give a command."
   input = gets.chomp
   
   if input.include?('find')
-    puts "Which number again?" 
-    id = gets.chomp
+    id = input.match(/\d+$/)[0]
     puts find(id)
-    loop = true
     elsif input.match('all')
-      puts ordered_by_qualifications(@candidates, QUALIFICATION)
-      loop = true
+      #puts ordered_by_qualifications(@candidates, QUALIFICATION1, QUALIFICATION2)
+      puts all(@candidates)
     elsif input.match('qualified')
-      puts qualified_candidates(@candidates)
-      loop = true
+      puts "#{qualified_candidates(@candidates)}".green
     elsif
       input.match('quit')
       puts "Bye!"
       loop = false
     else
       puts "Command not understood"
-      loop = true 
   end
 end
-
-
-
-
-# test
-# pp ordered_by_qualifications(@candidates, QUALIFICATION)

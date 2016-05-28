@@ -37,7 +37,7 @@ require 'active_support/all'
     id: 11,
     years_of_experience: 12,
     github_points: 32,
-    languages: ['VB', 'Cobol', 'Fortran'],
+    languages: ['VB', 'Cobol', 'Fortran', 'Python'],
     date_applied: 2.days.ago.to_date,
     age: 42
   },

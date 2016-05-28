@@ -4,11 +4,7 @@
 ##Task 2
 
 def experienced?(candidate)
-  if candidate[:years_of_experience] > 2
-    true
-  else
-    false
-  end
+  candidate[:years_of_experience] > 2
 end
 
 ##Task 3
@@ -18,10 +14,10 @@ def find(id)
     candidate[:id] == id.to_i
   end
 
-  if selected
+  if selected.empty?
+    puts "ID not found."
+  else 
     selected
-  else
-    nil
   end
 end
 
@@ -32,7 +28,7 @@ def has_requisite_github_points?(candidate, points)
 end
 
 def knows_rubyorpython?(candidate)
-  candidate[:languages].include?('Ruby' || 'Python')
+  candidate[:languages].any? { |language| ['Ruby', 'Python'].include? language }
 end
 
 def has_requisite_applied_days?(candidate, days)
@@ -59,19 +55,42 @@ def qualified_candidates(candidates)
   end
 end
 
+def all(candidates)
+  green = []
+  red = []
+
+  candidates.each do |candidate|
+    if experienced?(candidate) \
+    && has_requisite_github_points?(candidate, REQUISITE_GITHUB_POINTS) \
+    && knows_rubyorpython?(candidate) \
+    && has_requisite_applied_days?(candidate, REQUISITE_DAYS_APPLIED) \
+    && has_requisite_age?(candidate, REQUISITE_AGE)
+      green.push(candidate)
+    else
+      red.push(candidate)
+    end
+  end
+
+    puts "#{green}".green
+    puts "#{red}".red
+end
+
+
 #test
 # pp qualified_candidates(@candidates)
 
 
 ## Task 5
 
-QUALIFICATION = :years_of_experience
+QUALIFICATION1 = :years_of_experience
+QUALIFICATION2 = :github_points
 
-def ordered_by_qualifications(candidates, qualification)
-  ordered = candidates.sort_by {|candidates| candidates[qualification] }
+def ordered_by_qualifications(candidates, qualification1, qualification2)
+  ordered = candidates.sort_by {|candidates| [candidates[QUALIFICATION1], candidates[QUALIFICATION2]] }
 end
 
 
 
+# a.sort_by {|h| [ h['foo'],h['bar'] ]}
 
-
+# a.sort { |a, b| [a['foo'], a['bar']] <=> [b['foo'], b['bar']] }
