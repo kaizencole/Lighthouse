@@ -1,3 +1,5 @@
+require 'pry-byebug'
+
 @states = {
   OR: 'Oregon',
   FL: 'Florida',
@@ -28,9 +30,13 @@
 def describe_state(state_abbrev)
   state_name = @states[state_abbrev.to_sym] 
   cities = @cities[state_abbrev.to_sym]
-  return "#{state_abbrev} is for #{state_name}. 
-  Cities include: #{cities.join(', ')}"
+  return "#{state_abbrev} stands for #{state_name}. 
+  Cities in that state include: #{cities.join(', ')}"
 end
+
+puts "---- Task 3: Test ----"
+puts describe_state('CA')
+
 
 # Task 4
 
@@ -44,28 +50,64 @@ end
   TX: '16'
 }
 
-# Task 5
+# # Task 5
 
 def calculate_tax(state_abbrev, dollar)
   taxes = @taxes[state_abbrev.to_sym].to_f * 0.01 * dollar.to_f
   return taxes.round(2)
 end
 
-# Task 6
+puts "---- Task 5: Test ----"
+puts calculate_tax('WA', 4000)
 
-# Define a method find_state_for_city which should:
 
-#     Take as input the name of a city
-#     Return the state code for where that city is located
+# # Task 6
 
-# puts
-
-# @cities.each do |state, city|
-#     city.join(', ')
-# end
-
-def find_state_for_city(search)
-  @cities.each do |state, city|
-    puts state if city.include? search
-  end
+def find_state_for_city(city)
+ @cities.select {|state, cities| cities.include?(city)}
 end
+
+puts "---- Task 6: Test ----"
+puts find_state_for_city('Miami')
+
+
+
+
+# # Task 7
+
+@states = {
+  OR: {name: 'Oregon',
+      cities: ['Portland', 'Salem']
+    },
+  
+  FL: {name: 'Florida',
+      cities: ['Miami', 'Tampa', 'Orlando'],
+    },
+
+  CA: {name: 'California',
+      cities: ['San Francisco', 'Los Angeles', 'San Diego,' 'Oakland']
+    },
+  
+  NY: {name:'New York',
+      cities: ['Buffalo', 'Albany', 'Syracuse']
+    },
+  
+  MI: {name:'Michigan',
+     cities: ['Detroit', 'Ann Arbor']
+   },
+
+  WA: {name:'Washington',
+     cities: ['Seattle', 'Spokane']
+   },
+
+  TX:{name:'Texas',
+     cities: ['Dallas', 'Austin', 'Houston']  
+   },
+}
+
+
+# # Task 8
+
+#Complete 
+
+
