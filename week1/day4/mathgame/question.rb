@@ -1,5 +1,4 @@
 require_relative "./main.rb"
-require_relative "./question.rb"
 
 
 def generate_question()

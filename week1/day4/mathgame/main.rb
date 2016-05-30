@@ -1,6 +1,5 @@
-require_relative 'player.rb'
-require_relative 'question.rb'
-
+require_relative './player.rb'
+require_relative './question.rb'
 
 # Initialize players
 
@@ -45,5 +44,3 @@ else
 end
 
 loser.stats
-
-
